@@ -9,10 +9,10 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to my world</h1>
         </header>
-        <Person name="Sam" age="20" />
-        <Person name="San" age="25"/>
-        <Person name="Sam" age="22"/>
-        <Person name="Sepp" age="21"/>
+        <Person name="Sam" age="20"> I wrote this stuff </Person>
+        <Person name="San" age="25"> My favorite thing is food! </Person>
+        <Person name="Sam" age="22"> I love Redhead people! </Person>
+        <Person name="Sepp" age="21"> I am a medic student. </Person>
       </div>
     );
     ///return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'loololopl'))
