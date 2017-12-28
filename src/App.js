@@ -28,7 +28,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to my world</h1>
         </header>
-        <button onClick={this.switchHandler.bind(this, 'Linnea')}>Switch Data</button>
+        <button onClick={() => this.switchHandler('Linnea11!!!1')}>Switch Data</button>
         <Person
          name={this.state.persons[0].name} 
          age={this.state.persons[0].age}
