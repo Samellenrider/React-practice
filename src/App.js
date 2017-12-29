@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import UserInput from './UserInput/UserInput';
 
 
 class App extends Component {
@@ -37,7 +38,7 @@ class App extends Component {
     const style = {
       backgroundColor: 'white',
       font: 'inherit',
-      border: '1x solid blue',
+      border: '1px solid black',
       padding: '8px',
       cursor: 'pointer', 
     };
@@ -64,6 +65,7 @@ class App extends Component {
          name={this.state.persons[2].name} 
          age={this.state.persons[2].age}> 
          I love Zara Larsson! </Person>
+        <UserInput/>
       </div>
     );
     ///return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'loololopl'))
