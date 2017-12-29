@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/Useroutput';
 
 
 class App extends Component {
@@ -11,17 +12,9 @@ class App extends Component {
       {name: 'Chris', age: 25},
       {name: 'Emma', age: 20}
     ],
-    otherState: 'some other thing'
-  }
-
-  switchHandler = (newName) => {
-    this.setState({
-      persons: [
-        {name: 'Sam', age: 20},
-        {name: 'Chris', age: 24},
-        {name: newName, age: 28}
-      ] 
-    })
+    textfield: [
+      {text: ""}
+    ]
   }
 
   changedHandler = (event) => {
@@ -34,14 +27,22 @@ class App extends Component {
     })
   }
 
+  write = (event) => {
+    this.setState({
+      textfield:[
+      {text: event.target.value},
+      ]
+    })
+  }
+
   render() {
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid black',
-      padding: '8px',
-      cursor: 'pointer', 
-    };
+  //   const style = {
+  //     backgroundColor: 'white',
+  //     font: 'inherit',
+  //     border: '1px solid black',
+  //     padding: '8px',
+  //     cursor: 'pointer', 
+  //   };
 
     return (
       <div className="App">
@@ -49,26 +50,21 @@ class App extends Component {
           <h1 className="App-title">Welcome to my world</h1>
         </header>
         <button 
-         style={style}
+         // style={style}
          onClick={() => this.switchHandler('Linnea11!!!1')}>Switch Data</button>
-        <Person
+         <Person
          name={this.state.persons[0].name} 
          age={this.state.persons[0].age}
-         click={this.switchHandler.bind(this, 'Lin!!')}
          changed={this.changedHandler}>
          I wrote this stuff </Person>
-        <Person 
-         name={this.state.persons[1].name} 
-         age={this.state.persons[1].age}> 
-         My favorite thing is food! </Person>
-        <Person 
-         name={this.state.persons[2].name} 
-         age={this.state.persons[2].age}> 
-         I love Zara Larsson! </Person>
-        <UserInput/>
+
+        <UserInput text={this.state.textfield[0].text} 
+         change={this.write}/>
+        <UserOutput 
+         text={this.state.textfield[0].text} 
+         change={this.write}/>
       </div>
     );
-    ///return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'loololopl'))
   }
 }
 
