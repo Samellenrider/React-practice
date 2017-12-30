@@ -12,33 +12,12 @@ class App extends Component {
       {name: 'Chris', age: 25},
       {name: 'Emma', age: 20}
     ],
-    textfield: [
-      {text: ""}
-    ],
     showPersons: false,
   }
-
-  changedHandler = (event) => {
-    this.setState({
-      persons: [
-        {name: event.target.value, age: 20},
-        {name: 'Sam', age: 24},
-        {name: 'Lolllls', age: 28}
-      ] 
-    })
-  }
-
-  write = (event) => {
-    this.setState({
-      textfield:[
-      {text: event.target.value},
-      ]
-    })
-  }
-
+  
   togglePersonsHandler = () => {
-    // const doesShow = this.state.shoePersons;
-    // this.setState({showPersons: !doesShow}); //if doesShow === true showPersons === false
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow}); //if doesShow === true showPersons === false
   }
 
   render() {
@@ -50,10 +29,10 @@ class App extends Component {
       cursor: 'pointer', 
     };
 
-    let persons = null;
+    let person = null;
 
     if (this.state.showPersons) {
-      persons = (
+      person = (
         <div>
          <Person
          name={this.state.persons[0].name} 
@@ -61,7 +40,7 @@ class App extends Component {
          changed={this.changedHandler}>
          I wrote this stuff </Person>
         </div>
-        )
+      );
     }
 
     return (
@@ -70,22 +49,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to my world</h1>
         </header>
         <button 
-         style={style}
-         onClick={this.togglePersonsHandler()}>Switch Data</button>
-         {persons}
-       {this.state.showPersons === true ? 
-        <div>
-         <Person
-         name={this.state.persons[0].name} 
-         age={this.state.persons[0].age}
-         changed={this.changedHandler}>
-         I wrote this stuff </Person>
-        </div> : null
-      }
-
-        <UserInput text={this.state.textfield[0].text} change={this.write}/>
-        <UserOutput text={this.state.textfield[0].text} change={this.write}/>
-
+        style={style}
+         onClick={this.togglePersonsHandler}>Switch Data</button>
+        {person}
       </div>
     );
   }
