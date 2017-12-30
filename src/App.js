@@ -14,7 +14,8 @@ class App extends Component {
     ],
     textfield: [
       {text: ""}
-    ]
+    ],
+    showPersons: false,
   }
 
   changedHandler = (event) => {
@@ -35,14 +36,18 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+
+  }
+
   render() {
-  //   const style = {
-  //     backgroundColor: 'white',
-  //     font: 'inherit',
-  //     border: '1px solid black',
-  //     padding: '8px',
-  //     cursor: 'pointer', 
-  //   };
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid black',
+      padding: '8px',
+      cursor: 'pointer', 
+    };
 
     return (
       <div className="App">
@@ -51,12 +56,17 @@ class App extends Component {
         </header>
         <button 
          // style={style}
-         onClick={() => this.switchHandler('Linnea11!!!1')}>Switch Data</button>
+         onClick={this.togglePersonsHandler()}>Switch Data</button>
+
+      {this.state.showPersons ? 
+        <div>
          <Person
          name={this.state.persons[0].name} 
          age={this.state.persons[0].age}
          changed={this.changedHandler}>
          I wrote this stuff </Person>
+        </div> : null
+      }
 
         <UserInput text={this.state.textfield[0].text} 
          change={this.write}/>
