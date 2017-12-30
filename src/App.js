@@ -37,7 +37,8 @@ class App extends Component {
   }
 
   togglePersonsHandler = () => {
-
+    // const doesShow = this.state.shoePersons;
+    // this.setState({showPersons: !doesShow}); //if doesShow === true showPersons === false
   }
 
   render() {
@@ -49,16 +50,30 @@ class App extends Component {
       cursor: 'pointer', 
     };
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+         <Person
+         name={this.state.persons[0].name} 
+         age={this.state.persons[0].age}
+         changed={this.changedHandler}>
+         I wrote this stuff </Person>
+        </div>
+        )
+    }
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to my world</h1>
         </header>
         <button 
-         // style={style}
+         style={style}
          onClick={this.togglePersonsHandler()}>Switch Data</button>
-
-      {this.state.showPersons ? 
+         {persons}
+       {this.state.showPersons === true ? 
         <div>
          <Person
          name={this.state.persons[0].name} 
@@ -68,11 +83,9 @@ class App extends Component {
         </div> : null
       }
 
-        <UserInput text={this.state.textfield[0].text} 
-         change={this.write}/>
-        <UserOutput 
-         text={this.state.textfield[0].text} 
-         change={this.write}/>
+        <UserInput text={this.state.textfield[0].text} change={this.write}/>
+        <UserOutput text={this.state.textfield[0].text} change={this.write}/>
+
       </div>
     );
   }
