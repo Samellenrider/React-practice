@@ -9,9 +9,9 @@ import UserOutput from './UserOutput/Useroutput';
 class App extends Component {
   state = {
     persons: [
-      {name: 'Sam', age: 20},
-      {name: 'Chris', age: 25},
-      {name: 'Emma', age: 20}
+      {id:'jsfkgh', name: 'Sam', age: 20},
+      {id:'sdfnir', name: 'Chris', age: 25},
+      {id:'dofios', name: 'Emma', age: 20}
     ],
     showPersons: false,
   }
@@ -47,7 +47,8 @@ class App extends Component {
           return <Person 
             click={() => this.deletePersonHandler(index)}
             name={person.name} 
-            age={person.age} />
+            age={person.age} 
+            key={person.id}/>
         })}
         </div>
       );
@@ -56,11 +57,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to my world</h1>
+          <h1 className="App-title">Look at our Peeeeeps!</h1>
         </header>
         <button 
         style={style}
-         onClick={this.togglePersonsHandler}>Switch Data</button>
+         onClick={this.togglePersonsHandler}> Toggle Peeps </button>
         {person}
       </div>
     );
