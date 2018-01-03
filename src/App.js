@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import Person from './Person/Person';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/Useroutput';
@@ -34,11 +35,11 @@ class App extends Component {
     if (this.state.showPersons) {
       person = (
         <div>
-         <Person
-         name={this.state.persons[0].name} 
-         age={this.state.persons[0].age}
-         changed={this.changedHandler}>
-         I wrote this stuff </Person>
+        {this.state.persons.map(person => {
+          return <Person 
+                   name={person.name} 
+                   age={person.age} />
+        })}
         </div>
       );
     }
